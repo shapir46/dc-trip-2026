@@ -1,0 +1,491 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0">
+<title>🌸 DC Family Trip · March 29–April 1</title>
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,700;1,400&family=DM+Sans:wght@300;400;500;600&display=swap" rel="stylesheet">
+<style>
+  :root { --navy:#1a2744;--teal:#2d7dd2;--blush:#f7b8c4;--gold:#d4882a;--cream:#fdf8f3;--text:#2c2c2c;--muted:#7a7a8c;--white:#ffffff; }
+  *{margin:0;padding:0;box-sizing:border-box;-webkit-tap-highlight-color:transparent;}
+  body{font-family:'DM Sans',sans-serif;background:var(--cream);color:var(--text);min-height:100vh;font-size:15px;line-height:1.5;max-width:480px;margin:0 auto;}
+  .hero{background:var(--navy);padding:36px 20px 28px;position:relative;overflow:hidden;}
+  .hero::before{content:'';position:absolute;top:-60px;right:-60px;width:220px;height:220px;background:radial-gradient(circle,rgba(247,184,196,.25) 0%,transparent 70%);border-radius:50%;}
+  .hero::after{content:'';position:absolute;bottom:-40px;left:-40px;width:160px;height:160px;background:radial-gradient(circle,rgba(45,125,210,.3) 0%,transparent 70%);border-radius:50%;}
+  .hero-emoji{font-size:36px;display:block;margin-bottom:10px;}
+  .hero h1{font-family:'Playfair Display',serif;font-size:28px;color:var(--white);line-height:1.2;margin-bottom:6px;position:relative;}
+  .hero-sub{font-size:13px;color:var(--blush);font-style:italic;font-family:'Playfair Display',serif;margin-bottom:16px;position:relative;}
+  .hero-meta{display:flex;gap:8px;flex-wrap:wrap;position:relative;}
+  .badge{background:rgba(255,255,255,.12);border:1px solid rgba(255,255,255,.2);color:var(--white);padding:4px 11px;border-radius:20px;font-size:12px;font-weight:500;}
+  .badge.pink{background:rgba(247,184,196,.2);border-color:var(--blush);color:var(--blush);}
+  .bloom-banner{background:linear-gradient(135deg,#f7b8c4,#fde8d8);padding:14px 20px;display:flex;align-items:center;gap:12px;border-bottom:1px solid rgba(247,184,196,.4);}
+  .bloom-banner .icon{font-size:22px;flex-shrink:0;}
+  .bloom-banner p{font-size:13px;color:#7a3040;font-weight:500;line-height:1.4;}
+  .bloom-banner strong{color:#5c1f2e;}
+  .day-tabs{display:flex;overflow-x:auto;scrollbar-width:none;background:var(--white);border-bottom:2px solid #e8e8e8;position:sticky;top:0;z-index:100;-webkit-overflow-scrolling:touch;box-shadow:0 2px 8px rgba(0,0,0,.08);}
+  .day-tabs::-webkit-scrollbar{display:none;}
+  .tab-btn{flex-shrink:0;padding:12px 16px;border:none;background:none;font-family:'DM Sans',sans-serif;font-size:13px;font-weight:500;color:var(--muted);cursor:pointer;border-bottom:3px solid transparent;margin-bottom:-2px;transition:all .2s;white-space:nowrap;}
+  .tab-btn.active{color:var(--navy);border-bottom-color:var(--teal);}
+  .tab-btn .day-label{display:block;font-size:11px;font-weight:400;color:var(--muted);margin-top:1px;}
+  .day-section{display:none;animation:fadeIn .3s ease;}
+  .day-section.active{display:block;}
+  @keyframes fadeIn{from{opacity:0;transform:translateY(6px)}to{opacity:1;transform:translateY(0)}}
+  .day-header{padding:20px 20px 14px;background:var(--white);border-bottom:1px solid #eee;}
+  .day-header h2{font-family:'Playfair Display',serif;font-size:22px;color:var(--navy);margin-bottom:4px;}
+  .day-header .day-subtitle{font-size:13px;color:var(--muted);}
+  .timeline{padding:16px 20px;display:flex;flex-direction:column;gap:0;}
+  .timeline-item{display:flex;gap:14px;position:relative;}
+  .timeline-item:not(:last-child)::before{content:'';position:absolute;left:35px;top:38px;bottom:-4px;width:2px;background:#e4e4e4;z-index:0;}
+  .time-col{flex-shrink:0;width:58px;text-align:right;padding-top:12px;}
+  .time-text{font-size:11px;font-weight:600;color:var(--muted);line-height:1.3;}
+  .dot-col{flex-shrink:0;width:14px;display:flex;flex-direction:column;align-items:center;padding-top:16px;position:relative;z-index:1;}
+  .dot{width:12px;height:12px;border-radius:50%;border:2px solid var(--white);box-shadow:0 0 0 2px #ccc;background:var(--white);flex-shrink:0;}
+  .dot.highlight{background:var(--teal);box-shadow:0 0 0 2px var(--teal);}
+  .dot.blossom{background:#e8748a;box-shadow:0 0 0 2px #e8748a;}
+  .dot.food{background:var(--gold);box-shadow:0 0 0 2px var(--gold);}
+  .dot.confirmed{background:#3a9b5c;box-shadow:0 0 0 2px #3a9b5c;}
+  .dot.book{background:#c0392b;box-shadow:0 0 0 2px #c0392b;}
+  .content-col{flex:1;padding-bottom:18px;padding-top:8px;}
+  .event-card{background:var(--white);border-radius:12px;padding:13px 14px;border-left:3px solid #e0e0e0;box-shadow:0 1px 4px rgba(0,0,0,.06);}
+  .event-card.blossom{border-left-color:#e8748a;background:#fff8f9;}
+  .event-card.highlight{border-left-color:var(--teal);background:#f5f9ff;}
+  .event-card.food{border-left-color:var(--gold);background:#fffbf5;}
+  .event-card.confirmed{border-left-color:#3a9b5c;background:#f5fdf7;}
+  .event-card.book-now{border-left-color:#c0392b;background:#fff5f5;}
+  .event-card.seder{border-left-color:#7b5ea7;background:#faf7ff;}
+  .event-title{font-size:14px;font-weight:600;color:var(--navy);margin-bottom:4px;line-height:1.3;}
+  .event-detail{font-size:13px;color:#555;line-height:1.5;}
+  .event-tag{display:inline-block;font-size:10px;font-weight:600;padding:2px 8px;border-radius:10px;margin-bottom:5px;text-transform:uppercase;letter-spacing:.5px;}
+  .tag-confirmed{background:#e6f7ee;color:#2a7a4a;}
+  .tag-book{background:#fdecea;color:#b93326;}
+  .tag-blossom{background:#fde8ef;color:#a0334a;}
+  .event-links{display:flex;gap:8px;flex-wrap:wrap;margin-top:9px;}
+  .link-btn{display:inline-flex;align-items:center;gap:4px;font-size:11px;font-weight:600;padding:4px 10px;border-radius:20px;text-decoration:none;border:1px solid;transition:opacity .15s;}
+  .link-btn:active{opacity:.7;}
+  .link-btn.website{background:#eef4ff;color:#1d4ed8;border-color:#bfdbfe;}
+  .link-btn.yelp{background:#fff1f0;color:#c0392b;border-color:#fecaca;}
+  .link-btn.tickets{background:#f0fdf4;color:#166534;border-color:#bbf7d0;}
+  .tip-card{margin:4px 20px 8px;background:linear-gradient(135deg,#f0f7ff,#e8f4e8);border-radius:12px;padding:13px 15px;display:flex;gap:10px;align-items:flex-start;}
+  .tip-card .tip-icon{font-size:18px;flex-shrink:0;margin-top:1px;}
+  .tip-card p{font-size:13px;color:#3a4a5c;line-height:1.5;}
+  .tip-card strong{color:var(--navy);}
+  .res-section{padding:20px;}
+  .res-section h3{font-family:'Playfair Display',serif;font-size:20px;color:var(--navy);margin-bottom:14px;}
+  .res-card{background:var(--white);border-radius:12px;overflow:hidden;box-shadow:0 2px 8px rgba(0,0,0,.07);margin-bottom:10px;display:flex;align-items:center;}
+  .res-date{background:var(--navy);color:var(--white);padding:14px 12px;font-size:11px;font-weight:600;text-align:center;min-width:56px;line-height:1.4;align-self:stretch;display:flex;flex-direction:column;justify-content:center;}
+  .res-date .res-day{font-size:13px;font-weight:700;}
+  .res-body{flex:1;padding:12px 13px;}
+  .res-name{font-size:14px;font-weight:600;color:var(--navy);margin-bottom:2px;}
+  .res-time{font-size:12px;color:var(--muted);}
+  .res-status{padding:0 14px;font-size:12px;font-weight:700;white-space:nowrap;}
+  .status-ok{color:#2a7a4a;}
+  .status-book{color:#c0392b;}
+  .america250{margin:8px 20px 20px;background:linear-gradient(135deg,var(--navy) 0%,#2d4a8a 100%);border-radius:16px;padding:20px;color:var(--white);position:relative;overflow:hidden;}
+  .america250::after{content:'🇺🇸';position:absolute;right:16px;top:16px;font-size:32px;opacity:.3;}
+  .america250 h3{font-family:'Playfair Display',serif;font-size:17px;margin-bottom:10px;color:var(--blush);}
+  .america250 ul{list-style:none;display:flex;flex-direction:column;gap:8px;}
+  .america250 li{font-size:13px;color:rgba(255,255,255,.85);display:flex;gap:8px;}
+  .america250 li::before{content:'→';color:var(--blush);flex-shrink:0;}
+  .footer{padding:24px 20px;text-align:center;color:var(--muted);font-size:12px;border-top:1px solid #e8e8e8;margin-top:8px;}
+  .footer p{margin-bottom:4px;}
+</style>
+</head>
+<body>
+
+<div class="hero">
+  <span class="hero-emoji">🌸</span>
+  <h1>DC Family Adventure</h1>
+  <p class="hero-sub">Cherry Blossom Peak Bloom &amp; America's 250th</p>
+  <div class="hero-meta">
+    <span class="badge">March 29 – April 1</span>
+    <span class="badge">Salamander DC</span>
+    <span class="badge pink">2 Adults · 4 Kids</span>
+  </div>
+</div>
+
+<div class="bloom-banner">
+  <span class="icon">🌸</span>
+  <p><strong>Peak bloom: March 29–April 1</strong> — perfectly timed with your trip! Tidal Basin walk is on Sunday.</p>
+</div>
+
+<div class="day-tabs">
+  <button class="tab-btn active" onclick="showDay('sun',this)">🚗 Sun 3/29<span class="day-label">Arrival</span></button>
+  <button class="tab-btn" onclick="showDay('mon',this)">🛸 Mon 3/30<span class="day-label">Air &amp; Space</span></button>
+  <button class="tab-btn" onclick="showDay('tue',this)">🦖 Tue 3/31<span class="day-label">Georgetown</span></button>
+  <button class="tab-btn" onclick="showDay('wed',this)">🕵️ Wed 4/1<span class="day-label">Spy + Seder</span></button>
+  <button class="tab-btn" onclick="showDay('res',this)">✅ Bookings<span class="day-label">Reservations</span></button>
+</div>
+
+<!-- SUNDAY -->
+<div class="day-section active" id="day-sun">
+  <div class="day-header"><h2>Sunday, March 29</h2><p class="day-subtitle">Drive from Michigan · Arrival · Cherry Blossoms 🌸</p></div>
+  <div class="timeline">
+    <div class="timeline-item">
+      <div class="time-col"><span class="time-text">All Day</span></div>
+      <div class="dot-col"><div class="dot"></div></div>
+      <div class="content-col"><div class="event-card">
+        <div class="event-title">🚗 Drive: Michigan → Washington D.C.</div>
+        <div class="event-detail">8–10 hrs. Pack snacks and stop every 2 hours. Aim to arrive by 4:30 PM.</div>
+      </div></div>
+    </div>
+    <div class="timeline-item">
+      <div class="time-col"><span class="time-text">~4:30 PM</span></div>
+      <div class="dot-col"><div class="dot highlight"></div></div>
+      <div class="content-col"><div class="event-card highlight">
+        <div class="event-title">🏨 Check In: Salamander DC at The Wharf</div>
+        <div class="event-detail">Freshen up and let the kids stretch. The waterfront is right outside.</div>
+        <div class="event-links">
+          <a class="link-btn website" href="https://www.salamanderdc.com/" target="_blank">🌐 Website</a>
+        </div>
+      </div></div>
+    </div>
+    <div class="timeline-item">
+      <div class="time-col"><span class="time-text">5:00 PM</span></div>
+      <div class="dot-col"><div class="dot blossom"></div></div>
+      <div class="content-col"><div class="event-card blossom">
+        <span class="event-tag tag-blossom">🌸 Peak Bloom Day!</span>
+        <div class="event-title">Tidal Basin Cherry Blossom Walk ⭐</div>
+        <div class="event-detail">Uber to the Tidal Basin (~10 min, ~$15). Walk the 2-mile loop among iconic Yoshino cherry trees in full bloom. Jefferson Memorial backdrop. Free. Allow 45–60 min.</div>
+        <div class="event-links">
+          <a class="link-btn website" href="https://nationalcherryblossomfestival.org/" target="_blank">🌐 Festival Site</a>
+        </div>
+      </div></div>
+    </div>
+    <div class="timeline-item">
+      <div class="time-col"><span class="time-text">~5:50 PM</span></div>
+      <div class="dot-col"><div class="dot blossom"></div></div>
+      <div class="content-col"><div class="event-card blossom">
+        <div class="event-title">📸 Jefferson Memorial stop</div>
+        <div class="event-detail">5 min from the basin path. Kids can run on the steps. Beautifully lit at dusk!</div>
+        <div class="event-links">
+          <a class="link-btn website" href="https://www.nps.gov/thje/index.htm" target="_blank">🌐 NPS Page</a>
+        </div>
+      </div></div>
+    </div>
+    <div class="timeline-item">
+      <div class="time-col"><span class="time-text">6:00 PM</span></div>
+      <div class="dot-col"><div class="dot food"></div></div>
+      <div class="content-col"><div class="event-card food">
+        <span class="event-tag tag-confirmed">✅ Confirmed</span>
+        <div class="event-title">🦞 Dinner: Hank's Oyster Bar</div>
+        <div class="event-detail">Right on The Wharf. Oysters, crab cakes, lobster po' boys. Ask for an outdoor waterfront table if the evening is warm.</div>
+        <div class="event-links">
+          <a class="link-btn website" href="https://hanksoysterbar.com/the-wharf/" target="_blank">🌐 Website</a>
+          <a class="link-btn yelp" href="https://www.yelp.com/biz/hanks-oyster-bar-the-wharf-washington-3" target="_blank">⭐ Yelp</a>
+        </div>
+      </div></div>
+    </div>
+    <div class="timeline-item">
+      <div class="time-col"><span class="time-text">~8:00 PM</span></div>
+      <div class="dot-col"><div class="dot"></div></div>
+      <div class="content-col"><div class="event-card">
+        <div class="event-title">🌊 Evening Wharf stroll + early bedtime</div>
+        <div class="event-detail">Walk the boardwalk. Long drive day — early rest for everyone!</div>
+      </div></div>
+    </div>
+  </div>
+  <div class="tip-card"><span class="tip-icon">💡</span><p><strong>Cherry Blossom Tip:</strong> Sunday is the first day of predicted peak bloom. Go before dinner while daylight is golden. Bring the camera!</p></div>
+</div>
+
+<!-- MONDAY -->
+<div class="day-section" id="day-mon">
+  <div class="day-header"><h2>Monday, March 30</h2><p class="day-subtitle">Air &amp; Space · National Mall · Cherry Blossoms 🛸</p></div>
+  <div class="timeline">
+    <div class="timeline-item">
+      <div class="time-col"><span class="time-text">8:00 AM</span></div>
+      <div class="dot-col"><div class="dot"></div></div>
+      <div class="content-col"><div class="event-card">
+        <div class="event-title">🍳 Hotel breakfast + get ready</div>
+        <div class="event-detail">Fuel up for a big day at the Salamander or grab something on The Wharf.</div>
+      </div></div>
+    </div>
+    <div class="timeline-item">
+      <div class="time-col"><span class="time-text">9:00 AM</span></div>
+      <div class="dot-col"><div class="dot blossom"></div></div>
+      <div class="content-col"><div class="event-card blossom">
+        <span class="event-tag tag-blossom">🌸 Optional</span>
+        <div class="event-title">Morning Tidal Basin Walk</div>
+        <div class="event-detail">Calmer crowds in the morning. 30 min loop, then Uber to Air &amp; Space. Skip if you need more time to get ready.</div>
+      </div></div>
+    </div>
+    <div class="timeline-item">
+      <div class="time-col"><span class="time-text">10:00 AM</span></div>
+      <div class="dot-col"><div class="dot confirmed"></div></div>
+      <div class="content-col"><div class="event-card confirmed">
+        <span class="event-tag tag-confirmed">✅ Confirmed</span>
+        <div class="event-title">🛸 National Air &amp; Space Museum</div>
+        <div class="event-detail">3–4 hrs. Wright Brothers plane, Apollo 11, IMAX, space food. The 7 &amp; 10 yr olds will be obsessed.<br><br>📋 <strong>Order #ZD3-V24-MSCW</strong> · 6 passes · Entry via Jefferson Drive (Mall side) · No early entry · Have passes ready to scan on phone</div>
+        <div class="event-links">
+          <a class="link-btn website" href="https://airandspace.si.edu/" target="_blank">🌐 Website</a>
+          <a class="link-btn tickets" href="https://airandspace.si.edu/visit" target="_blank">🎟 Visit Info</a>
+        </div>
+      </div></div>
+    </div>
+    <div class="timeline-item">
+      <div class="time-col"><span class="time-text">~1:30 PM</span></div>
+      <div class="dot-col"><div class="dot"></div></div>
+      <div class="content-col"><div class="event-card">
+        <div class="event-title">🌭 Lunch: Museum café or Mall food trucks</div>
+        <div class="event-detail">Food trucks line the Mall on warm days — a fun casual option with the kids.</div>
+      </div></div>
+    </div>
+    <div class="timeline-item">
+      <div class="time-col"><span class="time-text">2:30 PM</span></div>
+      <div class="dot-col"><div class="dot highlight"></div></div>
+      <div class="content-col"><div class="event-card highlight">
+        <div class="event-title">🏛️ Walk the National Mall</div>
+        <div class="event-detail">Washington Monument → Reflecting Pool → Lincoln Memorial. Huge open lawn perfect for kids to run! Allow 45–60 min.</div>
+        <div class="event-links">
+          <a class="link-btn website" href="https://www.nps.gov/nama/index.htm" target="_blank">🌐 NPS Page</a>
+        </div>
+      </div></div>
+    </div>
+    <div class="timeline-item">
+      <div class="time-col"><span class="time-text">3:30 PM</span></div>
+      <div class="dot-col"><div class="dot food"></div></div>
+      <div class="content-col"><div class="event-card food">
+        <span class="event-tag tag-confirmed">✅ Confirmed</span>
+        <div class="event-title">🍽️ Dinner: Old Ebbitt Grill</div>
+        <div class="event-detail">DC's oldest saloon, founded 1856. Oysters, steaks, burgers the kids will love. Just steps from the White House.</div>
+        <div class="event-links">
+          <a class="link-btn website" href="https://www.ebbitt.com/" target="_blank">🌐 Website</a>
+          <a class="link-btn yelp" href="https://www.yelp.com/biz/old-ebbitt-grill-washington" target="_blank">⭐ Yelp</a>
+        </div>
+      </div></div>
+    </div>
+    <div class="timeline-item">
+      <div class="time-col"><span class="time-text">~5:30 PM</span></div>
+      <div class="dot-col"><div class="dot"></div></div>
+      <div class="content-col"><div class="event-card">
+        <div class="event-title">🎨 Optional: National Portrait Gallery</div>
+        <div class="event-detail">Free, open late, with special America's 250th anniversary exhibits.</div>
+        <div class="event-links">
+          <a class="link-btn website" href="https://americanart.si.edu/visit/npg" target="_blank">🌐 Website</a>
+        </div>
+      </div></div>
+    </div>
+  </div>
+  <div class="tip-card"><span class="tip-icon">🇺🇸</span><p><strong>America's 250th:</strong> Every Smithsonian has special Semiquincentennial programming this year. Look for 250th installations throughout the Mall!</p></div>
+</div>
+
+<!-- TUESDAY -->
+<div class="day-section" id="day-tue">
+  <div class="day-header"><h2>Tuesday, March 31</h2><p class="day-subtitle">Natural History · Georgetown · Clyde's 🦖</p></div>
+  <div class="timeline">
+    <div class="timeline-item">
+      <div class="time-col"><span class="time-text">9:00 AM</span></div>
+      <div class="dot-col"><div class="dot"></div></div>
+      <div class="content-col"><div class="event-card">
+        <div class="event-title">🍳 Hotel breakfast + depart</div>
+        <div class="event-detail">Dress in layers — slight rain chance this afternoon.</div>
+      </div></div>
+    </div>
+    <div class="timeline-item">
+      <div class="time-col"><span class="time-text">10:00 AM</span></div>
+      <div class="dot-col"><div class="dot highlight"></div></div>
+      <div class="content-col"><div class="event-card highlight">
+        <div class="event-title">🦕 Smithsonian: Natural History Museum</div>
+        <div class="event-detail">Free! No tickets needed. Hope Diamond, dinosaur hall, Egyptian mummies, ocean hall. Plan 2.5–3 hrs.</div>
+        <div class="event-links">
+          <a class="link-btn website" href="https://naturalhistory.si.edu/" target="_blank">🌐 Website</a>
+        </div>
+      </div></div>
+    </div>
+    <div class="timeline-item">
+      <div class="time-col"><span class="time-text">~12:30 PM</span></div>
+      <div class="dot-col"><div class="dot"></div></div>
+      <div class="content-col"><div class="event-card">
+        <div class="event-title">🍕 Lunch near the Mall</div>
+        <div class="event-detail">Old Post Office food court or museum café before heading to Georgetown.</div>
+      </div></div>
+    </div>
+    <div class="timeline-item">
+      <div class="time-col"><span class="time-text">2:00 PM</span></div>
+      <div class="dot-col"><div class="dot highlight"></div></div>
+      <div class="content-col"><div class="event-card highlight">
+        <div class="event-title">🌊 Georgetown Waterfront Park</div>
+        <div class="event-detail">Uber to Georgetown (~15 min, ~$18). Walk the Potomac riverfront, great views of Key Bridge. Open green space for the kids.</div>
+        <div class="event-links">
+          <a class="link-btn website" href="https://www.nps.gov/places/georgetown-waterfront-park.htm" target="_blank">🌐 NPS Page</a>
+        </div>
+      </div></div>
+    </div>
+    <div class="timeline-item">
+      <div class="time-col"><span class="time-text">3:30 PM</span></div>
+      <div class="dot-col"><div class="dot"></div></div>
+      <div class="content-col"><div class="event-card">
+        <div class="event-title">🧁 Stroll M Street, Georgetown</div>
+        <div class="event-detail">Browse shops. Ice cream at Thomas Sweet or Georgetown Cupcake if the rain holds off!</div>
+        <div class="event-links">
+          <a class="link-btn website" href="https://www.georgetowndc.com/" target="_blank">🌐 Georgetown Guide</a>
+        </div>
+      </div></div>
+    </div>
+    <div class="timeline-item">
+      <div class="time-col"><span class="time-text">5:30 PM</span></div>
+      <div class="dot-col"><div class="dot food"></div></div>
+      <div class="content-col"><div class="event-card food">
+        <span class="event-tag tag-confirmed">✅ Confirmed</span>
+        <div class="event-title">🍽️ Dinner: Clyde's of Georgetown</div>
+        <div class="event-detail">Classic American comfort food on M Street — burgers, steak frites, shrimp cocktail. Very kid-friendly, lively atmosphere.</div>
+        <div class="event-links">
+          <a class="link-btn website" href="https://www.clydes.com/location/clydes-georgetown/" target="_blank">🌐 Website</a>
+          <a class="link-btn yelp" href="https://www.yelp.com/biz/clydes-of-georgetown-washington-3" target="_blank">⭐ Yelp</a>
+        </div>
+      </div></div>
+    </div>
+    <div class="timeline-item">
+      <div class="time-col"><span class="time-text">~7:30 PM</span></div>
+      <div class="dot-col"><div class="dot"></div></div>
+      <div class="content-col"><div class="event-card">
+        <div class="event-title">🌙 Evening stroll + head back</div>
+        <div class="event-detail">Post-dinner M Street walk or waterfront. Uber back to Salamander (~20 min).</div>
+      </div></div>
+    </div>
+  </div>
+  <div class="tip-card"><span class="tip-icon">🌧️</span><p><strong>Rain Backup:</strong> If afternoon rain hits, skip M Street and head to Clyde's early. Georgetown Cupcake is a great covered stop.</p></div>
+</div>
+
+<!-- WEDNESDAY -->
+<div class="day-section" id="day-wed">
+  <div class="day-header"><h2>Wednesday, April 1</h2><p class="day-subtitle">Spy Museum · National Zoo · Passover Seder ✡️</p></div>
+  <div class="timeline">
+    <div class="timeline-item">
+      <div class="time-col"><span class="time-text">9:00 AM</span></div>
+      <div class="dot-col"><div class="dot"></div></div>
+      <div class="content-col"><div class="event-card">
+        <div class="event-title">🍳 Hotel breakfast + early start</div>
+        <div class="event-detail">Big day — Spy Museum, Zoo, and the Seder. Early start helps everything flow.</div>
+      </div></div>
+    </div>
+    <div class="timeline-item">
+      <div class="time-col"><span class="time-text">9:30 AM</span></div>
+      <div class="dot-col"><div class="dot book"></div></div>
+      <div class="content-col"><div class="event-card book-now">
+        <span class="event-tag tag-book">🔲 Book Now!</span>
+        <div class="event-title">🕵️ International Spy Museum</div>
+        <div class="event-detail">Each kid gets a cover identity and spy mission. Your 7 &amp; 10 yr olds will love it. Allow 2–2.5 hrs.</div>
+        <div class="event-links">
+          <a class="link-btn website" href="https://www.spymuseum.org/" target="_blank">🌐 Website</a>
+          <a class="link-btn tickets" href="https://calendar.spymuseum.org/" target="_blank">🎟 Buy Tickets</a>
+        </div>
+      </div></div>
+    </div>
+    <div class="timeline-item">
+      <div class="time-col"><span class="time-text">~12:00 PM</span></div>
+      <div class="dot-col"><div class="dot"></div></div>
+      <div class="content-col"><div class="event-card">
+        <div class="event-title">🍕 Lunch near Spy Museum</div>
+        <div class="event-detail">Penn Quarter has great options — Chinatown, Matchbox Pizza, or the museum café.</div>
+      </div></div>
+    </div>
+    <div class="timeline-item">
+      <div class="time-col"><span class="time-text">1:00 PM</span></div>
+      <div class="dot-col"><div class="dot highlight"></div></div>
+      <div class="content-col"><div class="event-card highlight">
+        <div class="event-title">🐼 National Zoo</div>
+        <div class="event-detail">Free! Uber to Woodley Park (~20 min, ~$22). Giant pandas, lions, elephants, giraffes. Great for the 3 &amp; 5 yr olds.</div>
+        <div class="event-links">
+          <a class="link-btn website" href="https://nationalzoo.si.edu/" target="_blank">🌐 Website</a>
+        </div>
+      </div></div>
+    </div>
+    <div class="timeline-item">
+      <div class="time-col"><span class="time-text">3:30 PM</span></div>
+      <div class="dot-col"><div class="dot"></div></div>
+      <div class="content-col"><div class="event-card">
+        <div class="event-title">🏨 Back to hotel to freshen up</div>
+        <div class="event-detail">Uber back (~25 min, ~$25). Time to rest and get ready for the Seder.</div>
+      </div></div>
+    </div>
+    <div class="timeline-item">
+      <div class="time-col"><span class="time-text">5:30 PM</span></div>
+      <div class="dot-col"><div class="dot confirmed"></div></div>
+      <div class="content-col"><div class="event-card seder">
+        <span class="event-tag" style="background:#ede7f6;color:#5e35b1;">✡️ Confirmed</span>
+        <div class="event-title">Passover Seder: Joe's Seafood</div>
+        <div class="event-detail">Prix-fixe Seder menu: Matzo Ball Soup, Gefilte Fish, choice of Herb Roasted Chicken / Braised Short Rib / Wild Alaskan Halibut.<br><br>$79.95/adult · $34.95/child · ~$300 total · 750 15th St NW</div>
+        <div class="event-links">
+          <a class="link-btn website" href="https://joes.net/washington-dc/" target="_blank">🌐 Website</a>
+          <a class="link-btn yelp" href="https://www.yelp.com/biz/joes-seafood-prime-steak-and-stone-crab-washington" target="_blank">⭐ Yelp</a>
+        </div>
+      </div></div>
+    </div>
+    <div class="timeline-item">
+      <div class="time-col"><span class="time-text">~8:00 PM</span></div>
+      <div class="dot-col"><div class="dot"></div></div>
+      <div class="content-col"><div class="event-card">
+        <div class="event-title">🌊 Final Wharf stroll + last night</div>
+        <div class="event-detail">Enjoy the waterfront on your last night before heading home tomorrow.</div>
+      </div></div>
+    </div>
+  </div>
+  <div class="tip-card"><span class="tip-icon">✡️</span><p><strong>Seder Tip:</strong> Download a family-friendly Haggadah! The 5-year-old asking the Ma Nishtana will be a trip highlight.</p></div>
+</div>
+
+<!-- RESERVATIONS -->
+<div class="day-section" id="day-res">
+  <div class="res-section">
+    <h3>✅ Reservations &amp; Bookings</h3>
+    <div class="res-card">
+      <div class="res-date"><span class="res-day">SUN</span>3/29</div>
+      <div class="res-body"><div class="res-name">Hank's Oyster Bar</div><div class="res-time">6:00 PM · The Wharf</div></div>
+      <div class="res-status status-ok">✅</div>
+    </div>
+    <div class="res-card">
+      <div class="res-date"><span class="res-day">MON</span>3/30</div>
+      <div class="res-body"><div class="res-name">Air &amp; Space Museum</div><div class="res-time">10:00 AM · Order #ZD3-V24-MSCW · 6 passes</div></div>
+      <div class="res-status status-ok">✅</div>
+    </div>
+    <div class="res-card">
+      <div class="res-date"><span class="res-day">MON</span>3/30</div>
+      <div class="res-body"><div class="res-name">Old Ebbitt Grill</div><div class="res-time">3:30 PM · Penn Quarter</div></div>
+      <div class="res-status status-ok">✅</div>
+    </div>
+    <div class="res-card">
+      <div class="res-date"><span class="res-day">TUE</span>3/31</div>
+      <div class="res-body"><div class="res-name">Clyde's of Georgetown</div><div class="res-time">5:30 PM · M Street</div></div>
+      <div class="res-status status-ok">✅</div>
+    </div>
+    <div class="res-card" style="border:2px solid #fca5a5;">
+      <div class="res-date" style="background:#c0392b;"><span class="res-day">WED</span>4/1</div>
+      <div class="res-body"><div class="res-name">International Spy Museum</div><div class="res-time"><a href="https://calendar.spymuseum.org/" target="_blank" style="color:#c0392b;font-weight:700;">→ Book at spymuseum.org</a></div></div>
+      <div class="res-status status-book">🔲</div>
+    </div>
+    <div class="res-card">
+      <div class="res-date"><span class="res-day">WED</span>4/1</div>
+      <div class="res-body"><div class="res-name">Joe's Seafood — Seder</div><div class="res-time">5:30 PM · 750 15th St NW</div></div>
+      <div class="res-status status-ok">✅</div>
+    </div>
+  </div>
+  <div class="america250">
+    <h3>🇺🇸 America's 250th Anniversary</h3>
+    <ul>
+      <li>Every Smithsonian museum has special 250th programming this year</li>
+      <li>National Portrait Gallery: yearlong Semiquincentennial exhibits — free</li>
+      <li>National Gallery of Art: 250 years of American creativity exhibition</li>
+      <li>The cherry blossoms at peak bloom are part of the official 250th celebration!</li>
+    </ul>
+  </div>
+  <div class="tip-card" style="margin-top:0;background:linear-gradient(135deg,#fff8f9,#fde8ef);">
+    <span class="tip-icon">🌸</span>
+    <p><strong>Cherry Blossom Timing:</strong> Peak bloom is predicted March 29–April 1. Your Sunday Tidal Basin walk is perfectly timed. Monday morning is a bonus if blossoms persist!</p>
+  </div>
+</div>
+
+<div class="footer">
+  <p>🌸 Have an incredible trip! 🇺🇸</p>
+  <p>Salamander DC at The Wharf · March 29 – April 1, 2026</p>
+</div>
+
+<script>
+function showDay(id,btn){
+  document.querySelectorAll('.day-section').forEach(s=>s.classList.remove('active'));
+  document.querySelectorAll('.tab-btn').forEach(b=>b.classList.remove('active'));
+  document.getElementById('day-'+id).classList.add('active');
+  btn.classList.add('active');
+  window.scrollTo({top:0,behavior:'smooth'});
+}
+</script>
+</body>
+</html>
